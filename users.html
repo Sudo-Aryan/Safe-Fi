@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>users</title>
+
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width initial-scale=1">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    </head>
+    <body>
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="jumbotron" style="background-color: moccasin;">
+                        <span class="display-4">Edit Users</span>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12">
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th>Username</th>
+                                <th>Plastic Type</th>
+                                <th>Count</th>
+                                <th>Change Count</th>
+                                <th>Eligible offer</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Raju</td>
+                                <td id="type">HDP</td>
+                                <td>
+                                    <p id="cnt">0
+                                    </p>
+                                </td>
+                                <td>
+                                    <button type="button" class="btn btn-success" onclick="inc()">Add</button>
+                                    <button type="button" class="btn btn-warning" onclick="dec()">Remove</button>
+                                </td>
+                                <td>
+                                    <p id="offer">
+                                        no offer
+                                    </p>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>            
+                </div>
+            </div>
+        </div>
+        
+        <script type="text/javascript">
+            function inc(){
+                var tmp = document.getElementById("cnt").textContent;
+                var count = parseInt(tmp, 10);
+
+                var type = document.getElementById("type").textContent;
+                if (count>=0 && count <=200){
+                    count +=1;
+                    document.getElementById("cnt").innerHTML = count;
+                    if(count>49 && count<100 && type=="HDP"){
+                        document.getElementById("offer").innerHTML="4%";
+                    }
+                    else if(count>99 && count<151 && type=="HDP"){
+                        document.getElementById("offer").innerHTML="3%";
+                    }
+                    else if(count>150 && count<201 && type=="HDP"){
+                        document.getElementById("offer").innerHTML="2%";
+                    }else{
+                        document.getElementById("offer").innerHTML="no offer";
+                    }
+                };
+            };
+            function dec(){
+                var tmp = document.getElementById("cnt").textContent;;
+                var count = parseInt(tmp, 10);
+
+                var type = document.getElementById("type").textContent;
+                if (count>=0 && count <=200){
+                    count -=1;
+                    document.getElementById("cnt").innerHTML = count;
+                    if(count>49 && count<100 && type=="HDP"){
+                        document.getElementById("offer").innerHTML="3%";
+                    }
+                    else if(count>99 && count<151 && type=="HDP"){
+                        document.getElementById("offer").innerHTML="2%";
+                    }
+                    else if(count>150 && count<201 && type=="HDP"){
+                        document.getElementById("offer").innerHTML="1%";
+                    }else{
+                        document.getElementById("offer").innerHTML="no offer";
+                    }
+                };
+            };
+        </script>
+    </body>
+</html>
